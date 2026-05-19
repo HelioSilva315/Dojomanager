@@ -1,4 +1,3 @@
-# Dojomanager
 # DojoManager — Sistema SaaS para Academia de Artes Marciais
 
 ## Funcionalidades implementadas
@@ -139,4 +138,3 @@ public/uploads/*.jpg
 public/uploads/*.png
 *.log
 ```
-
