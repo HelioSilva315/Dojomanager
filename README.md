@@ -71,7 +71,7 @@ composer install --no-dev --optimize-autoloader
 ### 4. Configurar variáveis de ambiente
 ```bash
 cp .env.example .env
-nano .env   # preencha DB_HOST, DB_NAME, DB_USER, DB_PASSWORD
+nano .env   # preencha DB_*, APP_URL e APP_DOMAIN
 ```
 
 ### 5. Criar o banco de dados
@@ -80,7 +80,14 @@ CREATE DATABASE dojomanager CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ```
 Depois execute o schema:
 ```bash
-mysql -u usuario -p dojomanager < database/schema.sql
+mysql -u usuario -p dojomanager < database/schema_multitenant.sql
+```
+
+**Instalação já existente:** se o banco foi criado antes da tabela `aluno_modalidades`, execute também:
+```bash
+mysql -u usuario -p dojomanager < database/migrations/001_aluno_modalidades.sql
+mysql -u usuario -p dojomanager < database/migrations/002_historico_modalidade.sql
+mysql -u usuario -p dojomanager < database/migrations/003_planos_max_usuarios.sql
 ```
 
 ### 6. Definir senha do admin
